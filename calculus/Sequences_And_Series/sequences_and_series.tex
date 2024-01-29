@@ -1,0 +1,278 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{mlmodern}
+\usepackage{array}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\pgfplotsset{compat=1.18, width=10cm}
+
+\pagestyle{empty}
+\parindent 0px
+\title{Calculus II Topics}
+\author{Your Name}
+\date{\today}
+
+\newcommand{\formula}[2]{
+    {\renewcommand{\arraystretch}{2}
+        \begin{center}
+        \begin{tabular}{|p{0.9\textwidth}|}
+        \hline
+        \textbf{#1} \\
+        \hline
+        #2 \\
+        \hline
+        \end{tabular}
+        \end{center}
+    }
+}
+
+\begin{document}
+
+\setlength{\jot}{10pt}
+
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Prerequisites}
+
+\subsection{Indeterminate Form and  L'Hôpital's Rule: }
+\formula{Indeterminate Forms}{
+    Various indeterminate forms: $\frac{0}{0}$, $\frac{\infty}{\infty}$, $0 \cdot \infty$, $0^0$, $\infty - \infty$, $0^{\infty}$, $\infty^0$, $\frac{\infty}{0}$, $1^{\infty}$, $0^1$, $\frac{1}{0}$.
+}
+L'Hôpital's Rule is a method used to evaluate limits that result in indeterminate forms. The rule states that if $\lim_{x \to a} \frac{f(x)}{g(x)}$ is an indeterminate form, then $\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}$.
+\subsubsection{Example:}
+Consider the limit $\lim_{x \to 0} \frac{\sin(x)}{x}$. This limit is of the indeterminate form $\frac{0}{0}$ as $x$ approaches $0$. We can apply L'Hôpital's Rule to find the limit:
+\[
+\begin{aligned}
+    \lim_{x \to 0} \frac{\sin(x)}{x} &= \lim_{x \to 0} \frac{\cos(x)}{1} \quad \text{(Applying L'Hôpital's Rule)} \\
+    &= \cos(0) \\
+    &= 1.
+\end{aligned}
+\]
+
+\vspace{\baselineskip}
+
+\subsection{Squeeze Theorem: }
+\formula{Squeeze Theorem}{
+    If $f(x) \leq g(x) \leq h(x)$ for all $x$ in an open interval containing $a$ (except possibly at $a$), and $\lim_{x \to a} f(x) = \lim_{x \to a} h(x) = L$, then $\lim_{x \to a} g(x) = L$.
+}
+The Squeeze Theorem is used to find the limit of a function by "squeezing" it between two other functions whose limits are known.
+\subsubsection{Example:}
+Let's find the limit $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right)$. We can use the Squeeze Theorem by identifying functions $f(x)$ and $h(x)$ such that $f(x) \leq x^2 \sin\left(\frac{1}{x}\right) \leq h(x)$ for all $x$ in an open interval containing $0$:
+\[
+\begin{aligned}
+    f(x) &= 0, \\
+    h(x) &= x^2.
+\end{aligned}
+\]
+Now, we know that $\lim_{x \to 0} f(x) = \lim_{x \to 0} h(x) = 0$. Therefore, by the Squeeze Theorem, $\lim_{x \to 0} x^2 \sin\left(\frac{1}{x}\right) = 0$.
+
+\subsection{Limit of a Sequence: }
+\formula{Limit of a Sequence}{
+    $\lim_{n \to \infty} a_n = L$
+}
+The limit of a sequence is the value that the terms of the sequence approach as the index $n$ becomes arbitrarily large.
+\subsubsection{Example: }
+Consider the sequence defined by $a_n = \dfrac{1}{n}$. We want to find the limit of this sequence as $n$ approaches infinity:
+\[
+\lim_{n \to \infty} a_n = \lim_{n \to \infty} \frac{1}{n} = 0.
+\]
+In this case, as $n$ becomes larger and larger, the terms of the sequence approach zero, and therefore, the limit is $0$.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{Sequences and Series}
+
+\subsection{Recurrence Relation: }
+\formula{Recurrence Relation}{
+    A recurrence relation for a sequence $\{a_n\}$ is an equation that expresses $a_n$ in terms of one or more of the previous terms in the sequence.
+}
+\subsubsection{Example: }
+Consider the Fibonacci sequence defined by the recurrence relation $F_{n} = F_{n-1} + F_{n-2}$ with initial values $F_{0} = 0$ and $F_{1} = 1$. The recurrence relation expresses each term $F_{n}$ in terms of the two preceding terms, and subsequent terms can be calculated recursively.
+
+\vspace{\baselineskip}
+
+\subsection{Explicit Formula: }
+\formula{Explicit Formula}{
+    An explicit formula for a sequence $\{a_n\}$ is a formula that allows us to find the $n$th term directly without finding previous terms.
+}
+\subsubsection{Example: }
+The arithmetic sequence $2, 5, 8, 11, \ldots$ has an explicit formula. The common difference is $3$, so the $n$th term $a_n$ can be expressed as $a_n = 2 + 3(n-1)$, allowing for direct calculation of any term without finding previous terms.
+
+
+\subsection{Sigma Notation: }
+\formula{Sigma Notation}{
+    $\sum_{k=1}^{n} a_k = a_1 + a_2 + \ldots + a_n$
+}
+Sigma notation is a concise way to represent the sum of a sequence. The variable $k$ is the index of summation, and $a_k$ is the general term.
+\subsubsection{Example: }
+Consider the arithmetic sequence $3, 7, 11, 15, \ldots$. The sum of the first $n$ terms of this sequence can be expressed using sigma notation:
+\[
+\sum_{k=1}^{n} a_k = 3 + 7 + 11 + \ldots + (4n-1)
+\]
+where $a_k = 4k - 1$ is the general term of the sequence.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{Geometric and Telescoping Series}
+
+\subsection{Geometric Series: }
+\formula{Geometric Series}{
+    $\sum_{n=0}^{\infty} ar^n = a + ar + ar^2 + \ldots$
+}
+A geometric series is the sum of the terms of a geometric sequence.
+\subsubsection{Example: }
+Consider the geometric series given by $\sum_{n=0}^{\infty} ar^n$ with $|r| < 1$. The sum of this series is calculated as:
+\[
+\sum_{n=0}^{\infty} ar^n = a + ar + ar^2 + \ldots = \frac{a}{1 - r},
+\]
+where $|r| < 1$ ensures convergence. For instance, if $a = 3$ and $r = \frac{1}{2}$, the sum is $\frac{3}{1 - \frac{1}{2}} = \frac{3}{\frac{1}{2}} = 6$.
+
+
+\vspace{\baselineskip}
+
+\subsection{Telescoping Series: }
+\formula{Telescoping Series}{
+    $\sum_{n=1}^{\infty} (b_n - b_{n-1}) = (b_1 - b_0) + (b_2 - b_1) + \ldots$
+}
+A telescoping series is a series whose partial sums simplify to a finite expression.
+\subsubsection{Example: }
+Let's examine the telescoping series $\sum_{n=1}^{\infty} (b_n - b_{n-1})$ where $b_n = \frac{1}{n}$:
+\[
+\sum_{n=1}^{\infty} (b_n - b_{n-1}) = \left(\frac{1}{1} - \frac{1}{0}\right) + \left(\frac{1}{2} - \frac{1}{1}\right) + \left(\frac{1}{3} - \frac{1}{2}\right) + \ldots.
+\]
+Simplifying the terms, we get:
+\[
+\sum_{n=1}^{\infty} (b_n - b_{n-1}) = 1 + \left(\frac{1}{2} - \frac{1}{2}\right) + \left(\frac{1}{3} - \frac{1}{3}\right) + \ldots = 1.
+\]
+In this case, the telescoping nature of the series allows many terms to cancel, leaving a finite sum.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{Series Convergence Tests}
+
+\subsection{Divergence Test: }
+\formula{Divergence Test}{
+    If $\lim_{n \to \infty} a_n \neq 0$, then the series $\sum_{n=1}^{\infty} a_n$ diverges.
+}
+The Divergence Test states that if the limit of the terms is not zero, then the series diverges.
+\subsubsection{Example: }
+Consider the series $\sum_{n=1}^{\infty} \frac{1}{n}$. The terms $\frac{1}{n}$ do not approach zero as $n$ goes to infinity. Therefore, $\lim_{n \to \infty} \frac{1}{n} \neq 0$, and by the Divergence Test, the series diverges.
+
+\vspace{\baselineskip}
+
+\subsection{Integral Test: }
+\formula{Integral Test}{
+    If $f(x)$ is positive, continuous, and decreasing on $[1, \infty)$, then $\sum_{n=1}^{\infty} f(n)$ and $\int_{1}^{\infty} f(x) \,dx$ either both converge or both diverge.
+}
+The Integral Test relates the convergence of a series to the convergence of an improper integral.
+\subsubsection{Example: }
+Let $f(x) = \frac{1}{x}$. The function $f(x)$ is positive, continuous, and decreasing on $[1, \infty)$. Applying the Integral Test, we have:
+\[
+\int_{1}^{\infty} \frac{1}{x} \,dx = \lim_{b \to \infty} \ln(b) - \ln(1) = \infty.
+\]
+Since the integral diverges, by the Integral Test, the series $\sum_{n=1}^{\infty} \frac{1}{n}$ also diverges.
+
+\vspace{\baselineskip}
+
+\subsection{p-Series: }
+\formula{p-Series}{
+    $\sum_{n=1}^{\infty} \frac{1}{n^p}$
+}
+A p-series is a series of the form $\sum_{n=1}^{\infty} \frac{1}{n^p}$, where $p$ is a positive constant.
+\subsubsection{Example: }
+Consider the p-series $\sum_{n=1}^{\infty} \frac{1}{n^2}$. This is a p-series with $p = 2$, and it converges since $2 > 1$. p-Series converge when $p > 1$.
+
+\vspace{\baselineskip}
+
+\subsection{Comparison Test: }
+\formula{Comparison Test}{
+    If $0 \leq a_n \leq b_n$ for all $n$ and $\sum_{n=1}^{\infty} b_n$ converges, then $\sum_{n=1}^{\infty} a_n$ converges. If $\sum_{n=1}^{\infty} a_n$ diverges, then $\sum_{n=1}^{\infty} b_n$ diverges.
+}
+The Comparison Test is used to determine the convergence or divergence of a series by comparing it to another series.
+\subsubsection{Example: }
+Let $a_n = \frac{1}{n^2}$ and $b_n = \frac{1}{n}$. For all $n$, we have $0 \leq a_n \leq b_n$. Since $\sum_{n=1}^{\infty} \frac{1}{n}$ is a harmonic series, which diverges, and $0 \leq a_n \leq b_n$, by the Comparison Test, $\sum_{n=1}^{\infty} \frac{1}{n^2}$ also diverges.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{Limit Comparison Test: }
+\formula{Limit Comparison Test}{
+    If $\lim_{n \to \infty} \frac{a_n}{b_n} = L$, where $L$ is a positive finite number, then either both series $\sum_{n=1}^{\infty} a_n$ and $\sum_{n=1}^{\infty} b_n$ converge or both diverge.
+}
+The Limit Comparison Test is a variation of the Comparison Test.
+\subsubsection{Example: }
+Consider the series $\sum_{n=1}^{\infty} \frac{1}{n^2}$ and $\sum_{n=1}^{\infty} \frac{1}{n}$. Let $a_n = \frac{1}{n^2}$ and $b_n = \frac{1}{n}$. We have:
+\[
+\lim_{n \to \infty} \frac{a_n}{b_n} = \lim_{n \to \infty} \frac{\frac{1}{n^2}}{\frac{1}{n}} = \lim_{n \to \infty} \frac{1}{n} = 0.
+\]
+Since the limit is a positive finite number, by the Limit Comparison Test, both series $\sum_{n=1}^{\infty} \frac{1}{n^2}$ and $\sum_{n=1}^{\infty} \frac{1}{n}$ converge.
+
+\vspace{\baselineskip}
+
+\subsection{Alternating Series Test: }
+\formula{Alternating Series Test}{
+    If the terms of an alternating series decrease in absolute value and approach zero, then the series converges. Moreover, the remainder after any partial sum is always less than the first omitted term.
+}
+The Alternating Series Test is used to determine the convergence of alternating series.
+\subsubsection{Example: }
+Consider the alternating series $\sum_{n=1}^{\infty} (-1)^{n+1}\frac{1}{n}$. The terms of this series satisfy the conditions of the Alternating Series Test: they decrease in absolute value and approach zero. Therefore, the series converges.
+
+\vspace{\baselineskip}
+
+\subsection{Absolute Convergence: }
+\formula{Absolute Convergence}{
+    If $\sum_{n=1}^{\infty} |a_n|$ converges, then $\sum_{n=1}^{\infty} a_n$ converges absolutely.
+}
+\subsubsection{Example: }
+Let $a_n = \frac{(-1)^n}{n}$. The absolute value of the terms is $|a_n| = \frac{1}{n}$. Since $\sum_{n=1}^{\infty} \frac{1}{n}$ is a convergent p-series, by the Absolute Convergence Test, the series $\sum_{n=1}^{\infty} \frac{(-1)^n}{n}$ converges absolutely.
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+\section{Conditional Convergence: }
+\formula{Conditional Convergence}{
+    If $\sum_{n=1}^{\infty} |a_n|$ diverges, but $\sum_{n=1}^{\infty} a_n$ converges, then $\sum_{n=1}^{\infty} a_n$ converges conditionally.
+}
+\subsubsection{Example: }
+Consider the alternating series $\sum_{n=1}^{\infty} (-1)^{n+1}\frac{1}{n}$. We showed earlier that the series converges by the Alternating Series Test. Now, let's consider the absolute value of the terms: $|a_n| = \frac{1}{n}$. The series $\sum_{n=1}^{\infty} \frac{1}{n}$ diverges (harmonic series). Therefore, by the Conditional Convergence definition, the original series $\sum_{n=1}^{\infty} (-1)^{n+1}\frac{1}{n}$ converges conditionally.
+
+\vspace{\baselineskip}
+
+\subsection{Ratio Test: }
+\formula{Ratio Test}{
+    If $\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = L$, where $L < 1$, then $\sum_{n=1}^{\infty} a_n$ converges absolutely. If $L > 1$ or $\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \infty$, then $\sum_{n=1}^{\infty} a_n$ diverges. If $L = 1$, the test is inconclusive.
+}
+The Ratio Test is used to determine the convergence or divergence of a series by examining the limit of the ratio of consecutive terms.
+\subsubsection{Example: }
+Consider the series $\sum_{n=1}^{\infty} \frac{1}{2^n}$. Let $a_n = \frac{1}{2^n}$. Using the Ratio Test:
+\[
+\lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right| = \lim_{n \to \infty} \frac{\frac{1}{2^{n+1}}}{\frac{1}{2^n}} = \lim_{n \to \infty} \frac{1}{2} = \frac{1}{2} < 1.
+\]
+Since the limit is less than 1, the series $\sum_{n=1}^{\infty} \frac{1}{2^n}$ converges absolutely.
+
+\vspace{\baselineskip}
+
+\subsection{Root Test: }
+\formula{Root Test}{
+    If $\lim_{n \to \infty} \sqrt[n]{|a_n|} = L$, where $L < 1$, then $\sum_{n=1}^{\infty} a_n$ converges absolutely. If $L > 1$ or $\lim_{n \to \infty} \sqrt[n]{|a_n|} = \infty$, then $\sum_{n=1}^{\infty} a_n$ diverges. If $L = 1$, the test is inconclusive.
+}
+The Root Test is used to determine the convergence or divergence of a series by examining the $n$th root of the absolute value of the terms.
+\subsubsection{Example: }
+Consider the series $\sum_{n=1}^{\infty} \frac{1}{n!}$. Let $a_n = \frac{1}{n!}$. Using the Root Test:
+\[
+\lim_{n \to \infty} \sqrt[n]{|a_n|} = \lim_{n \to \infty} \sqrt[n]{\frac{1}{n!}} = 0 < 1.
+\]
+Since the limit is less than 1, the series $\sum_{n=1}^{\infty} \frac{1}{n!}$ converges absolutely.
+
+
+\end{document}
